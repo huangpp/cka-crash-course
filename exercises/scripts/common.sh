@@ -4,7 +4,8 @@ if [ -z ${K8S_VERSION+x} ]; then
   K8S_VERSION=1.31.1-1.1
 fi
 
-echo 'nameserver 8.8.8.8' | sudo tee -a /etc/resolv.conf >/dev/null
+sudo sed -i 's/#DNS=/DNS=8.8.8.8 1.1.1.1/g' /etc/systemd/resolved.conf
+sudo systemctl restart systemd-resolved
 
 # Install containerd container runtime
 sudo apt install \
