@@ -38,7 +38,7 @@ Containers:
       etcd
       ...
       --cert-file=/etc/kubernetes/pki/etcd/server.crt
-      --listen-client-urls=https://127.0.0.1:2379,https://192.168.56.10:2379
+      --listen-client-urls=https://127.0.0.1:2379,https://192.168.58.10:2379
       --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
 ...
 ```

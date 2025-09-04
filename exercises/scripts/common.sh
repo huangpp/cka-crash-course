@@ -4,6 +4,8 @@ if [ -z ${K8S_VERSION+x} ]; then
   K8S_VERSION=1.31.1-1.1
 fi
 
+echo 'nameserver 8.8.8.8' | sudo tee -a /etc/resolv.conf >/dev/null
+
 # Install containerd container runtime
 sudo apt install \
     ca-certificates \
@@ -20,7 +22,7 @@ sudo apt install containerd.io
 sudo systemctl start containerd
 sudo systemctl enable containerd
 sudo systemctl status containerd
-sudo mv etc/containerd/config.toml etc/containerd/config.toml.orig
+sudo mv /etc/containerd/config.toml /etc/containerd/config.toml.orig
 containerd config default | sudo tee /etc/containerd/config.toml
 sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
 

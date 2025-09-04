@@ -16,7 +16,7 @@ The following flowchart shows the high-level architecture.
 
 ```mermaid
 flowchart LR;
-    curl-- 192.168.56.10:NodePort -->was{{web-app-service}};
+    curl-- 192.168.58.10:NodePort -->was{{web-app-service}};
     was-.->wa[web-app];
     wa-- :3306 -->ms{{mysql-service}};
     ms-.->md[(mysql-db)];
